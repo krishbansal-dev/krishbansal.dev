@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import TerminalPrompt from '../components/TerminalPrompt'
+import usePageMeta from '../hooks/usePageMeta'
 
 const projects = [
   {
@@ -13,6 +14,10 @@ const projects = [
 ]
 
 export default function DeploymentsPage() {
+  usePageMeta(
+    'Projects & Deployments by Krish Bansal | krishbansal.dev',
+    'Explore projects built by Krish Bansal — including PeerDrop (WebRTC P2P file sharing) and other infrastructure and full-stack deployments.'
+  )
   const [show, setShow] = useState(false)
 
   useEffect(() => {

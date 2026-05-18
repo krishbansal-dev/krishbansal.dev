@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import TerminalPrompt from '../components/TerminalPrompt'
+import usePageMeta from '../hooks/usePageMeta'
 
 const skills = [
   { name: 'Bare Metal Hosting', icon: 'dns',      bar: '█████████░', branch: '├──' },
@@ -18,6 +19,10 @@ const statusItems = [
 ]
 
 export default function AboutPage() {
+  usePageMeta(
+    'About Krish Bansal — Skills, Expertise & Bio | krishbansal.dev',
+    'Learn about Krish Bansal — a student and tech enthusiast specializing in bare-metal hosting, server management, full-stack development, AI, and automation.'
+  )
   const [show, setShow] = useState(false)
 
   useEffect(() => {

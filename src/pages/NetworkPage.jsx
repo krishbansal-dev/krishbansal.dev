@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import TerminalPrompt from '../components/TerminalPrompt'
+import usePageMeta from '../hooks/usePageMeta'
 
 const links = [
   {
@@ -27,6 +28,10 @@ const links = [
 ]
 
 export default function NetworkPage() {
+  usePageMeta(
+    'Connect with Krish Bansal — GitHub, LinkedIn, Email | krishbansal.dev',
+    'Get in touch with Krish Bansal via GitHub, LinkedIn, or email. Open to collaboration on infrastructure, full-stack, and WebRTC projects.'
+  )
   const [show, setShow] = useState(false)
   const [copied, setCopied] = useState(false)
 

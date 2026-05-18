@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import TerminalPrompt from '../components/TerminalPrompt'
+import usePageMeta from '../hooks/usePageMeta'
 
 const projectData = {
   peerdrop: {
@@ -38,6 +39,15 @@ export default function ProjectDetailPage() {
   const { slug } = useParams()
   const [show, setShow] = useState(false)
   const project = projectData[slug]
+
+  usePageMeta(
+    project
+      ? `${project.name} by Krish Bansal | krishbansal.dev`
+      : 'Project Not Found | krishbansal.dev',
+    project
+      ? `${project.summary} Built by Krish Bansal.`
+      : 'This project could not be found on krishbansal.dev.'
+  )
 
   useEffect(() => {
     const t = setTimeout(() => setShow(true), 100)

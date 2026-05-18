@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import TerminalPrompt from '../components/TerminalPrompt'
+import usePageMeta from '../hooks/usePageMeta'
 
 const ASCII_ART = ` _  __      _     _       _                       _   
 | |/ /     (_)   | |     | |                     | |  
@@ -22,6 +23,10 @@ const infoLines = [
 ]
 
 export default function InitPage() {
+  usePageMeta(
+    'Krish Bansal — Infrastructure Engineer & Full-Stack Developer | krishbansal.dev',
+    'Krish Bansal is a student and infrastructure engineer specializing in bare-metal servers, full-stack development, automation, and AI.'
+  )
   const [bootComplete, setBootComplete] = useState(false)
   const [visibleBoot, setVisibleBoot] = useState([])
   const [showStatus, setShowStatus] = useState(false)
