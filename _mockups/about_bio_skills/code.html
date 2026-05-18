@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>krishbansal.dev - ~/about</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#39FF14",
+            "background-light": "#f6f8f5",
+            "background-dark": "#050505",
+            "surface": "#111111",
+            "text": "#E0E0E0",
+            "muted": "#4A4A4A",
+            "accent": "#FF3366",
+          },
+          fontFamily: {
+            "display": ["JetBrains Mono", "monospace"],
+            "sans": ["JetBrains Mono", "monospace"],
+            "mono": ["JetBrains Mono", "monospace"]
+          },
+          borderRadius: {"DEFAULT": "0px", "sm": "0px", "md": "0px", "lg": "0px", "xl": "0px", "2xl": "0px", "3xl": "0px", "full": "0px"},
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: var(--color-background-dark, #050505);
+      color: var(--color-text, #E0E0E0);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .cursor-blink {
+      animation: blink 1s step-end infinite;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    
+    .nav-link:hover .bracket {
+      color: #39FF14;
+    }
+    
+    .nav-link.active .bracket {
+      color: #39FF14;
+    }
+    .nav-link.active .link-text {
+      color: #39FF14;
+    }
+    
+    .terminal-prompt-user { color: #FF3366; }
+    .terminal-prompt-host { color: #E0E0E0; }
+    .terminal-prompt-path { color: #39FF14; }
+    
+    .tree-node:hover {
+      background-color: #111111;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="bg-background-dark text-text min-h-screen flex flex-col items-center overflow-x-hidden selection:bg-primary selection:text-background-dark antialiased">
+<div class="w-full max-w-[960px] flex flex-col flex-1 px-4 sm:px-8 py-6">
+<!-- TopNavBar Shared Component Style Match -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-muted pb-4 mb-8">
+<div class="flex items-center gap-3">
+<div class="text-primary cursor-blink">█</div>
+<h2 class="text-text text-lg font-bold leading-tight tracking-tight">krishbansal.dev</h2>
+</div>
+<div class="flex items-center gap-6 hidden sm:flex">
+<a class="nav-link text-muted text-sm font-bold leading-normal transition-colors" href="#">
+<span class="bracket transition-colors">[</span> <span class="link-text text-text transition-colors">~/init</span> <span class="bracket transition-colors">]</span>
+</a>
+<a class="nav-link active text-muted text-sm font-bold leading-normal transition-colors" href="#">
+<span class="bracket transition-colors text-primary">[</span> <span class="link-text text-primary transition-colors">~/about</span> <span class="bracket transition-colors text-primary">]</span>
+</a>
+<a class="nav-link text-muted text-sm font-bold leading-normal transition-colors" href="#">
+<span class="bracket transition-colors">[</span> <span class="link-text text-text transition-colors">~/deployments</span> <span class="bracket transition-colors">]</span>
+</a>
+<a class="nav-link text-muted text-sm font-bold leading-normal transition-colors" href="#">
+<span class="bracket transition-colors">[</span> <span class="link-text text-text transition-colors">~/network</span> <span class="bracket transition-colors">]</span>
+</a>
+</div>
+</header>
+<main class="flex flex-col lg:flex-row gap-12 lg:gap-8 flex-1">
+<!-- Left Column: Bio -->
+<section class="flex-1 flex flex-col gap-4">
+<div class="flex items-center gap-2 text-sm font-bold break-all">
+<span class="terminal-prompt-user">user</span><span class="terminal-prompt-host">@krishbansal</span>:<span class="terminal-prompt-path">~$</span>
+<span class="text-text">cat bio.txt</span>
+</div>
+<div class="bg-surface border border-muted p-6 relative group">
+<div class="absolute top-0 left-0 w-full h-0.5 bg-primary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+<p class="text-text text-sm leading-relaxed mb-4">
+            Student, tech enthusiast passionate about tech and digital infra. I specialize in building robust, bare-metal server environments, full-stack applications, and automated workflows.
+          </p>
+<p class="text-text text-sm leading-relaxed">
+            My philosophy centers on raw performance, reducing abstractions where they aren't needed, and understanding systems from the metal up. Whether it's configuring a hypervisor or deploying a highly available web service, I value precision and reliability.
+          </p>
+</div>
+<div class="flex items-center gap-2 text-sm font-bold break-all mt-6">
+<span class="terminal-prompt-user">user</span><span class="terminal-prompt-host">@krishbansal</span>:<span class="terminal-prompt-path">~$</span>
+<span class="text-text">system_status --overview</span>
+</div>
+<div class="flex flex-col gap-2 pl-4 text-sm font-mono border-l border-muted">
+<div class="flex justify-between items-center w-full max-w-sm">
+<span class="text-muted">CPU_LOAD:</span>
+<span class="text-primary">[███░░░░░░░] 32%</span>
+</div>
+<div class="flex justify-between items-center w-full max-w-sm">
+<span class="text-muted">MEM_USAGE:</span>
+<span class="text-accent">[████████░░] 78%</span>
+</div>
+<div class="flex justify-between items-center w-full max-w-sm">
+<span class="text-muted">UPTIME:</span>
+<span class="text-text">98 Days, 14:22:11</span>
+</div>
+<div class="flex justify-between items-center w-full max-w-sm">
+<span class="text-muted">COFFEE:</span>
+<span class="text-primary">[██████████] 100%</span>
+</div>
+</div>
+</section>
+<!-- Right Column: Expertise Tree -->
+<section class="flex-1 flex flex-col gap-4">
+<div class="flex items-center gap-2 text-sm font-bold break-all">
+<span class="terminal-prompt-user">user</span><span class="terminal-prompt-host">@krishbansal</span>:<span class="terminal-prompt-path">~$</span>
+<span class="text-text">tree ~/expertise</span>
+</div>
+<div class="font-mono text-sm flex flex-col">
+<div class="text-primary font-bold mb-2">~/expertise</div>
+<div class="tree-node flex items-center justify-between p-2 transition-colors border border-transparent hover:border-muted">
+<div class="flex items-center gap-3 text-text">
+<span class="text-muted">├──</span>
+<span class="material-symbols-outlined text-muted text-lg">dns</span>
+<span>Bare Metal Hosting</span>
+</div>
+<span class="text-primary font-bold hidden sm:inline-block">[█████████░]</span>
+</div>
+<div class="tree-node flex items-center justify-between p-2 transition-colors border border-transparent hover:border-muted">
+<div class="flex items-center gap-3 text-text">
+<span class="text-muted">├──</span>
+<span class="material-symbols-outlined text-muted text-lg">terminal</span>
+<span>Server Management</span>
+</div>
+<span class="text-primary font-bold hidden sm:inline-block">[████████░░]</span>
+</div>
+<div class="tree-node flex items-center justify-between p-2 transition-colors border border-transparent hover:border-muted">
+<div class="flex items-center gap-3 text-text">
+<span class="text-muted">├──</span>
+<span class="material-symbols-outlined text-muted text-lg">language</span>
+<span>Website Hosting</span>
+</div>
+<span class="text-primary font-bold hidden sm:inline-block">[███████░░░]</span>
+</div>
+<div class="tree-node flex items-center justify-between p-2 transition-colors border border-transparent hover:border-muted">
+<div class="flex items-center gap-3 text-text">
+<span class="text-muted">├──</span>
+<span class="material-symbols-outlined text-muted text-lg">code</span>
+<span>Full Stack</span>
+</div>
+<span class="text-primary font-bold hidden sm:inline-block">[████████░░]</span>
+</div>
+<div class="tree-node flex items-center justify-between p-2 transition-colors border border-transparent hover:border-muted">
+<div class="flex items-center gap-3 text-text">
+<span class="text-muted">├──</span>
+<span class="material-symbols-outlined text-muted text-lg">memory</span>
+<span>AI</span>
+</div>
+<span class="text-primary font-bold hidden sm:inline-block">[█████░░░░░]</span>
+</div>
+<div class="tree-node flex items-center justify-between p-2 transition-colors border border-transparent hover:border-muted">
+<div class="flex items-center gap-3 text-text">
+<span class="text-muted">└──</span>
+<span class="material-symbols-outlined text-muted text-lg">settings</span>
+<span>Automations</span>
+</div>
+<span class="text-primary font-bold hidden sm:inline-block">[███████░░░]</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-sm font-bold break-all mt-4">
+<span class="terminal-prompt-user">user</span><span class="terminal-prompt-host">@krishbansal</span>:<span class="terminal-prompt-path">~/expertise$</span>
+<span class="text-primary cursor-blink">█</span>
+</div>
+</section>
+</main>
+</div>
+</body></html>

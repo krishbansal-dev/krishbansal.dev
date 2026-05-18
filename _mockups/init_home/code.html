@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>~/init | krishbansal.dev</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#39FF14",
+          "background-light": "#f6f8f5",
+          "background-dark": "#050505",
+          "surface": "#111111",
+          "text-main": "#E0E0E0",
+          "muted": "#4A4A4A",
+          "accent": "#FF3366",
+        },
+        fontFamily: {
+          "display": ["JetBrains Mono", "monospace"],
+          "body": ["JetBrains Mono", "monospace"]
+        },
+        borderRadius: {
+          "DEFAULT": "0px",
+          "sm": "0px",
+          "md": "0px",
+          "lg": "0px",
+          "xl": "0px",
+          "2xl": "0px",
+          "3xl": "0px",
+          "full": "0px",
+        },
+      },
+    },
+  }
+</script>
+<style>
+  body {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  .blinking-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background-color: var(--color-primary, #39FF14);
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+    margin-left: 4px;
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .typing-line {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .15em solid transparent;
+    width: 0;
+  }
+
+  .type-1 { animation: typing 0.2s steps(40, end) forwards; }
+  .type-2 { animation: typing 0.2s steps(40, end) forwards; animation-delay: 0.2s; }
+  .type-3 { animation: typing 0.2s steps(40, end) forwards; animation-delay: 0.4s; }
+  .type-4 { animation: typing 0.2s steps(40, end) forwards; animation-delay: 0.6s; }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  .nav-link:hover .nav-bracket {
+    color: #39FF14;
+  }
+  .nav-link:hover .nav-text {
+    color: #39FF14;
+  }
+</style>
+</head>
+<body class="bg-background-dark text-text-main min-h-screen flex flex-col items-center overflow-x-hidden selection:bg-primary selection:text-background-dark">
+<!-- Shared TopNavBar -->
+<div class="w-full flex justify-center border-b border-muted bg-background-dark">
+<div class="max-w-[800px] w-full px-4 sm:px-6 py-4 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="text-primary font-bold text-lg tracking-tight">&gt;_ krishbansal.dev</span>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="nav-link text-sm font-bold text-primary flex items-center gap-1 cursor-pointer transition-colors" href="#">
+<span class="nav-bracket text-primary">[</span>
+<span class="nav-text text-primary">~/init</span>
+<span class="nav-bracket text-primary">]</span>
+</a>
+<a class="nav-link text-sm font-bold text-muted flex items-center gap-1 cursor-pointer transition-colors" href="#">
+<span class="nav-bracket text-muted">[</span>
+<span class="nav-text text-text-main hover:text-primary transition-colors">~/about</span>
+<span class="nav-bracket text-muted">]</span>
+</a>
+<a class="nav-link text-sm font-bold text-muted flex items-center gap-1 cursor-pointer transition-colors" href="#">
+<span class="nav-bracket text-muted">[</span>
+<span class="nav-text text-text-main hover:text-primary transition-colors">~/deployments</span>
+<span class="nav-bracket text-muted">]</span>
+</a>
+<a class="nav-link text-sm font-bold text-muted flex items-center gap-1 cursor-pointer transition-colors" href="#">
+<span class="nav-bracket text-muted">[</span>
+<span class="nav-text text-text-main hover:text-primary transition-colors">~/network</span>
+<span class="nav-bracket text-muted">]</span>
+</a>
+</nav>
+<!-- Mobile menu button (visual only for mockup) -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-[800px] px-4 sm:px-6 py-12 flex flex-col gap-8">
+<!-- Boot Sequence -->
+<div class="flex flex-col gap-2 font-display text-sm md:text-base text-text-main">
+<p class="typing-line type-1">KERNEL LOADED...</p>
+<p class="typing-line type-2">BARE METAL RESOURCES: ALLOCATED...</p>
+<p class="typing-line type-3">INITIALIZING SYSTEM...</p>
+<p class="typing-line type-4 text-primary">SYSTEM STATUS: ONLINE...</p>
+</div>
+<!-- Terminal Prompt Block -->
+<div class="mt-8 flex flex-col gap-4">
+<div class="flex items-center gap-2 text-sm md:text-base font-bold flex-wrap">
+<span class="text-accent">user</span>
+<span class="text-text-main">@</span>
+<span class="text-text-main">krishbansal</span>
+<span class="text-text-main">:</span>
+<span class="text-primary">~$</span>
+<span class="text-text-main ml-2">./run_intro.sh</span>
+</div>
+<!-- Identity Block / ASCII -->
+<div class="mt-4 p-6 border border-muted bg-surface relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-primary/20"></div>
+<pre class="text-primary font-bold text-xs sm:text-sm md:text-base leading-tight overflow-x-auto pb-4 hide-scrollbar select-all"> _  __      _     _       _                       _   
+| |/ /     (_)   | |     | |                     | |  
+| ' /_ __ _ _ ___| |__   | |__   __ _ _ __  ___  | |  
+|  &lt;| '__| | / __| '_ \  | '_ \ / _` | '_ \/ __| | |  
+| . \ |  | | \__ \ | | | | |_) | (_| | | | \__ \ | |  
+|_|\_\_|  |_|_|___/_| |_| |_.__/ \__,_|_| |_|___/ |_|  
+                                                      
+        </pre>
+<div class="mt-6 flex flex-col gap-2 text-sm md:text-base text-text-main">
+<p class="opacity-0" style="animation: fadeIn 0.5s ease forwards 1s;">&gt; INITIALIZING USER PROFILE...</p>
+<p class="opacity-0" style="animation: fadeIn 0.5s ease forwards 1.2s;">&gt; SPECIALIZATION: INFRASTRUCTURE &amp; BARE METAL</p>
+<p class="opacity-0" style="animation: fadeIn 0.5s ease forwards 1.4s;">&gt; AWAITING COMMAND<span class="blinking-cursor"></span></p>
+</div>
+</div>
+</div>
+</main>
+<style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</body></html>
