@@ -6,7 +6,7 @@ const skills = [
   { name: 'Server Management',  icon: 'terminal',  bar: '████████░░', branch: '├──' },
   { name: 'Website Hosting',    icon: 'language',   bar: '███████░░░', branch: '├──' },
   { name: 'Full Stack',         icon: 'code',       bar: '████████░░', branch: '├──' },
-  { name: 'AI',                 icon: 'memory',     bar: '█████░░░░░', branch: '├──' },
+  { name: 'AI',                 icon: 'memory',     bar: '██████████', branch: '├──' },
   { name: 'Automations',        icon: 'settings',   bar: '███████░░░', branch: '└──' },
 ]
 
