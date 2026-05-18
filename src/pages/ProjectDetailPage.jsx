@@ -6,7 +6,7 @@ const projectData = {
   peerdrop: {
     name: 'PeerDrop',
     status: 'ACTIVE',
-    link: 'https://share.gamerlance.com',
+    link: 'https://peerdrop.krishbansal.dev',
     tags: ['WebRTC', 'Node.js', 'React', 'P2P'],
     summary: 'Serverless peer-to-peer file sharing powered by WebRTC.',
     sections: [

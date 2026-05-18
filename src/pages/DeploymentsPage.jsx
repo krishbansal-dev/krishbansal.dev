@@ -8,7 +8,7 @@ const projects = [
     desc: 'WebRTC-powered, serverless P2P file-sharing. Multi-connection parallel chunk transfer for near-theoretical bandwidth saturation.',
     tags: ['WebRTC', 'Node.js', 'React', 'P2P'],
     status: 'ACTIVE',
-    link: 'https://share.gamerlance.com',
+    link: 'https://peerdrop.krishbansal.dev',
   },
 ]
 
