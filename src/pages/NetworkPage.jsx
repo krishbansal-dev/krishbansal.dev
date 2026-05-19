@@ -39,6 +39,13 @@ const links = [
     desc: 'discordapp.com/users/715624445544235019',
     type: 'link',
   },
+  {
+    label: 'LeetCode',
+    href: 'https://leetcode.com/u/N0JRtpSDDl/',
+    icon: 'trophy',
+    desc: 'leetcode.com/u/N0JRtpSDDl',
+    type: 'link',
+  },
 ]
 
 export default function NetworkPage() {
