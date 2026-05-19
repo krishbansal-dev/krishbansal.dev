@@ -25,6 +25,20 @@ const links = [
     type: 'email',
     copyValue: 'contact@krishbansal.dev',
   },
+  {
+    label: 'Twitter / X',
+    href: 'https://x.com/krish4b',
+    icon: 'alternate_email',
+    desc: 'x.com/krish4b',
+    type: 'link',
+  },
+  {
+    label: 'Discord',
+    href: 'https://discordapp.com/users/715624445544235019',
+    icon: 'forum',
+    desc: 'discordapp.com/users/715624445544235019',
+    type: 'link',
+  },
 ]
 
 export default function NetworkPage() {
