@@ -24,7 +24,7 @@ const infoLines = [
 
 export default function InitPage() {
   usePageMeta(
-    'Krish Bansal — Infrastructure Engineer & Full-Stack Developer | krishbansal.dev',
+    'Krish Bansal | Infrastructure Engineer & Full-Stack Developer',
     'Krish Bansal is a student and infrastructure engineer specializing in bare-metal servers, full-stack development, automation, and AI.'
   )
   const [bootComplete, setBootComplete] = useState(false)
@@ -73,6 +73,7 @@ export default function InitPage() {
 
   return (
     <main className="page-content page-enter" id="page-init">
+      <h1 className="sr-only">Krish Bansal</h1>
       {/* Boot Sequence */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.875rem' }}>
         {bootLines.map((line, i) => (

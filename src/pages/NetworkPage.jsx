@@ -51,7 +51,7 @@ const links = [
 
 export default function NetworkPage() {
   usePageMeta(
-    'Connect with Krish Bansal — GitHub, LinkedIn, Email | krishbansal.dev',
+    'Krish Bansal | Contact & Network',
     'Get in touch with Krish Bansal via GitHub, LinkedIn, or email. Open to collaboration on infrastructure, full-stack, and WebRTC projects.'
   )
   const [show, setShow] = useState(false)

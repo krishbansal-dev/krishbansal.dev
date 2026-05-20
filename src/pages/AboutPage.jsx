@@ -21,7 +21,7 @@ const statusItems = [
 
 export default function AboutPage() {
   usePageMeta(
-    'About Krish Bansal — Skills, Expertise & Bio | krishbansal.dev',
+    'Krish Bansal | About & Expertise',
     'Learn about Krish Bansal — a student and tech enthusiast specializing in bare-metal hosting, server management, full-stack development, AI, and automation.'
   )
   const [show, setShow] = useState(false)

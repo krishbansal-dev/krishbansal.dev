@@ -43,8 +43,8 @@ export default function ProjectDetailPage() {
 
   usePageMeta(
     project
-      ? `${project.name} by Krish Bansal | krishbansal.dev`
-      : 'Project Not Found | krishbansal.dev',
+      ? `Krish Bansal | ${project.name} - Project Details`
+      : 'Krish Bansal | Project Not Found',
     project
       ? `${project.summary} Built by Krish Bansal.`
       : 'This project could not be found on krishbansal.dev.'

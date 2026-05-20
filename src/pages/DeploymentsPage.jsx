@@ -16,7 +16,7 @@ const projects = [
 
 export default function DeploymentsPage() {
   usePageMeta(
-    'Projects & Deployments by Krish Bansal | krishbansal.dev',
+    'Krish Bansal | Projects & Deployments',
     'Explore projects built by Krish Bansal — including PeerDrop (WebRTC P2P file sharing) and other infrastructure and full-stack deployments.'
   )
   const [show, setShow] = useState(false)
