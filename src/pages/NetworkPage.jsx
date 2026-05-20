@@ -110,7 +110,7 @@ export default function NetworkPage() {
             href={link.href}
             className="network-link"
             target={link.type === 'link' ? '_blank' : '_self'}
-            rel="noopener noreferrer"
+            rel={link.type === 'link' ? "me noopener noreferrer" : "noopener noreferrer"}
             id={`network-${link.label.toLowerCase()}`}
             onClick={link.type === 'email' ? (e) => handleEmailClick(e, link.copyValue) : undefined}
             style={{ cursor: 'pointer' }}
