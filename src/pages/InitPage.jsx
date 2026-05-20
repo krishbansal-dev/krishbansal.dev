@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import TerminalPrompt from '../components/TerminalPrompt'
 import usePageMeta from '../hooks/usePageMeta'
 
-const ASCII_ART = ` _  __      _     _       _                       _   
-| |/ /     (_)   | |     | |                     | |  
-| ' /_ __ _ _ ___| |__   | |__   __ _ _ __  ___  | |  
-|  <| '__| | / __| '_ \\  | '_ \\ / _\` | '_ \\/ __| | |  
-| . \\ |  | | \\__ \\ | | | | |_) | (_| | | | \\__ \\ | |  
-|_|\\_\\_|  |_|_|___/_| |_| |_.__/ \\__,_|_| |_|___/ |_|  
+const ASCII_ART = ` _  __      _     _       _                           _   
+| |/ /     (_)   | |     | |                         | |  
+| ' /_ __ _ _ ___| |__   | |__   __ _ _ __  ___   __ _  | |  
+|  <| '__| | / __| '_ \\  | '_ \\ / _\` | '_ \\/ __| / _\` | | |  
+| . \\ |  | | \\__ \\ | | | | |_) | (_| | | | \\__ \\ (_| | | |  
+|_|\\_\\_|  |_|_|___/_| |_| |_.__/ \\__,_|_| |_|___/\\__,_|_|  
 `
 
 const bootLines = [
@@ -22,17 +23,27 @@ const infoLines = [
   '> AWAITING COMMAND',
 ]
 
+const menuOptions = [
+  { key: '1', cmd: 'cd ~/about', label: 'Explore bio & system status', path: '/about' },
+  { key: '2', cmd: 'cd ~/deployments', label: 'Browse projects & deployments', path: '/deployments' },
+  { key: '3', cmd: 'cd ~/network', label: 'Get in touch & social links', path: '/network' },
+]
+
 export default function InitPage() {
   usePageMeta(
     'Krish Bansal — Infrastructure Engineer & Full-Stack Developer | krishbansal.dev',
     'Krish Bansal is a student and infrastructure engineer specializing in bare-metal servers, full-stack development, automation, and AI.'
   )
+  const navigate = useNavigate()
   const [bootComplete, setBootComplete] = useState(false)
   const [visibleBoot, setVisibleBoot] = useState([])
   const [showStatus, setShowStatus] = useState(false)
   const [showPrompt, setShowPrompt] = useState(false)
   const [showAscii, setShowAscii] = useState(false)
   const [visibleInfo, setVisibleInfo] = useState([])
+  
+  const [isNavigating, setIsNavigating] = useState(false)
+  const [typedText, setTypedText] = useState('')
 
   useEffect(() => {
     // Stagger boot lines
@@ -59,6 +70,28 @@ export default function InitPage() {
       }, i * 350)
     })
   }, [])
+
+  const handleOptionClick = (option) => {
+    if (isNavigating) return
+    setIsNavigating(true)
+    
+    let currentText = ''
+    const commandToType = option.cmd
+    let charIndex = 0
+    
+    const interval = setInterval(() => {
+      if (charIndex < commandToType.length) {
+        currentText += commandToType[charIndex]
+        setTypedText(currentText)
+        charIndex++
+      } else {
+        clearInterval(interval)
+        setTimeout(() => {
+          navigate(option.path)
+        }, 300)
+      }
+    }, 45)
+  }
 
   return (
     <main className="page-content page-enter" id="page-init">
@@ -107,25 +140,107 @@ export default function InitPage() {
           <pre className="ascii-art">{ASCII_ART}</pre>
 
           <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.875rem' }}>
-            {infoLines.map((line, i) => (
-              <p
-                key={i}
-                style={{
-                  opacity: visibleInfo.includes(i) ? 1 : 0,
-                  transform: visibleInfo.includes(i) ? 'translateY(0)' : 'translateY(4px)',
-                  transition: 'all 0.4s ease',
-                }}
-              >
-                {i === infoLines.length - 1 ? (
-                  <>
-                    {line}
-                    <span className="blinking-cursor" />
-                  </>
-                ) : (
-                  line
-                )}
-              </p>
-            ))}
+            {infoLines.map((line, i) => {
+              if (i === infoLines.length - 1) {
+                return (
+                  <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    <p
+                      style={{
+                        opacity: visibleInfo.includes(i) ? 1 : 0,
+                        transform: visibleInfo.includes(i) ? 'translateY(0)' : 'translateY(4px)',
+                        transition: 'all 0.4s ease',
+                      }}
+                    >
+                      {isNavigating ? (
+                        <>
+                          {`> AWAITING COMMAND: `}
+                          <span className="text-primary" style={{ fontWeight: 'bold' }}>{typedText}</span>
+                          <span className="blinking-cursor" />
+                        </>
+                      ) : (
+                        <>
+                          {line}
+                          <span className="blinking-cursor" />
+                        </>
+                      )}
+                    </p>
+
+                    {/* Interactive Selection Menu */}
+                    {visibleInfo.includes(i) && !isNavigating && (
+                      <div
+                        style={{
+                          marginTop: '1rem',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '0.5rem',
+                          animation: 'fadeIn 0.5s ease forwards',
+                        }}
+                      >
+                        <p style={{ color: 'var(--color-text-dim)', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
+                          SELECT A PATHWAY OR CLICK A COMMAND:
+                        </p>
+                        {menuOptions.map((opt) => (
+                          <button
+                            key={opt.key}
+                            onClick={() => handleOptionClick(opt)}
+                            className="cli-menu-btn"
+                            style={{
+                              background: 'none',
+                              border: 'none',
+                              color: 'var(--color-text)',
+                              fontFamily: 'var(--font-mono)',
+                              fontSize: '0.85rem',
+                              textAlign: 'left',
+                              padding: '0.4rem 0.6rem',
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              width: 'fit-content',
+                              borderRadius: '4px',
+                              transition: 'all 0.2s ease',
+                              borderLeft: '2px solid transparent',
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.color = 'var(--color-primary)'
+                              e.currentTarget.style.background = 'rgba(57, 255, 20, 0.05)'
+                              e.currentTarget.style.borderLeftColor = 'var(--color-primary)'
+                              e.currentTarget.style.transform = 'translateX(4px)'
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.color = 'var(--color-text)'
+                              e.currentTarget.style.background = 'none'
+                              e.currentTarget.style.borderLeftColor = 'transparent'
+                              e.currentTarget.style.transform = 'translateX(0)'
+                            }}
+                          >
+                            <span className="text-primary" style={{ marginRight: '0.5rem', fontWeight: 'bold' }}>
+                              [{opt.key}]
+                            </span>
+                            <span style={{ fontWeight: 'bold', marginRight: '1rem' }}>{opt.cmd}</span>
+                            <span style={{ color: 'var(--color-text-dim)', fontSize: '0.8rem' }}>
+                              --&gt; {opt.label}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )
+              }
+
+              return (
+                <p
+                  key={i}
+                  style={{
+                    opacity: visibleInfo.includes(i) ? 1 : 0,
+                    transform: visibleInfo.includes(i) ? 'translateY(0)' : 'translateY(4px)',
+                    transition: 'all 0.4s ease',
+                  }}
+                >
+                  {line}
+                </p>
+              )
+            })}
           </div>
         </div>
       )}
