@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import TerminalPrompt from '../components/TerminalPrompt'
+import InteractiveTerminalMenu from '../components/InteractiveTerminalMenu'
 import usePageMeta from '../hooks/usePageMeta'
 
 const skills = [
@@ -24,10 +25,74 @@ export default function AboutPage() {
     'Learn about Krish Bansal — a student and tech enthusiast specializing in bare-metal hosting, server management, full-stack development, AI, and automation.'
   )
   const [show, setShow] = useState(false)
+  const [uptime, setUptime] = useState('')
 
   useEffect(() => {
     const t = setTimeout(() => setShow(true), 100)
-    return () => clearTimeout(t)
+    
+    // Calculate difference from September 4, 2007 at 00:00:00 IST
+    const birthDate = new Date('2007-09-04T00:00:00+05:30')
+    
+    const getIstComponents = (d) => {
+      const istDate = new Date(d.getTime() + 5.5 * 60 * 60 * 1000)
+      return {
+        year: istDate.getUTCFullYear(),
+        month: istDate.getUTCMonth(),
+        date: istDate.getUTCDate(),
+        hours: istDate.getUTCHours(),
+        minutes: istDate.getUTCMinutes(),
+        seconds: istDate.getUTCSeconds()
+      }
+    }
+
+    const istBirth = getIstComponents(birthDate)
+
+    const updateUptime = () => {
+      const now = new Date()
+      const istNow = getIstComponents(now)
+      
+      let years = istNow.year - istBirth.year
+      let months = istNow.month - istBirth.month
+      let days = istNow.date - istBirth.date
+      
+      let hours = istNow.hours - istBirth.hours
+      let minutes = istNow.minutes - istBirth.minutes
+      let seconds = istNow.seconds - istBirth.seconds
+      
+      if (seconds < 0) {
+        seconds += 60
+        minutes--
+      }
+      if (minutes < 0) {
+        minutes += 60
+        hours--
+      }
+      if (hours < 0) {
+        hours += 24
+        days--
+      }
+      if (days < 0) {
+        months--
+        const prevMonth = new Date(Date.UTC(istNow.year, istNow.month, 0))
+        days += prevMonth.getUTCDate()
+      }
+      if (months < 0) {
+        years--
+        months += 12
+      }
+      
+      const pad = (num) => String(num).padStart(2, '0')
+      
+      setUptime(`${years} Years, ${months} Months, ${days} Days, ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`)
+    }
+
+    updateUptime()
+    const interval = setInterval(updateUptime, 1000)
+
+    return () => {
+      clearTimeout(t)
+      clearInterval(interval)
+    }
   }, [])
 
   return (
@@ -62,7 +127,9 @@ export default function AboutPage() {
               {statusItems.map((item) => (
                 <div className="status-row" key={item.label}>
                   <span className="status-label">{item.label}:</span>
-                  <span className={`status-value ${item.color}`}>{item.value}</span>
+                  <span className={`status-value ${item.color}`}>
+                    {item.label === 'UPTIME' ? uptime : item.value}
+                  </span>
                 </div>
               ))}
             </div>
@@ -91,16 +158,7 @@ export default function AboutPage() {
               ))}
             </div>
 
-            <div style={{ marginTop: '1rem' }}>
-              <div className="terminal-prompt">
-                <span className="prompt-user">user</span>
-                <span className="prompt-at"> @</span>
-                <span className="prompt-host">krishbansal</span>
-                <span className="prompt-colon"> : </span>
-                <span className="prompt-path">~/expertise$</span>
-                <span className="blinking-cursor" />
-              </div>
-            </div>
+            <InteractiveTerminalMenu path="~/expertise" />
           </div>
         </section>
       </div>

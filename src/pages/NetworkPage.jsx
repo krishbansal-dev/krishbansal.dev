@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import TerminalPrompt from '../components/TerminalPrompt'
+import InteractiveTerminalMenu from '../components/InteractiveTerminalMenu'
 import usePageMeta from '../hooks/usePageMeta'
 
 const links = [
@@ -148,16 +149,7 @@ export default function NetworkPage() {
         </p>
       </div>
 
-      <div style={{ marginTop: '1.5rem' }}>
-        <div className="terminal-prompt">
-          <span className="prompt-user">user</span>
-          <span className="prompt-at"> @</span>
-          <span className="prompt-host">krishbansal</span>
-          <span className="prompt-colon"> : </span>
-          <span className="prompt-path">~/network$</span>
-          <span className="blinking-cursor" />
-        </div>
-      </div>
+      <InteractiveTerminalMenu path="~/network" />
     </main>
   )
 }

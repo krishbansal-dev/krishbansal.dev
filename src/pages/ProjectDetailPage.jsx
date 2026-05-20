@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import TerminalPrompt from '../components/TerminalPrompt'
+import InteractiveTerminalMenu from '../components/InteractiveTerminalMenu'
 import usePageMeta from '../hooks/usePageMeta'
 
 const projectData = {
@@ -211,17 +212,7 @@ export default function ProjectDetailPage() {
         ))}
       </div>
 
-      {/* Trailing prompt */}
-      <div style={{ marginTop: '2rem' }}>
-        <div className="terminal-prompt">
-          <span className="prompt-user">user</span>
-          <span className="prompt-at"> @</span>
-          <span className="prompt-host">krishbansal</span>
-          <span className="prompt-colon"> : </span>
-          <span className="prompt-path">~/deployments/{slug}$</span>
-          <span className="blinking-cursor" />
-        </div>
-      </div>
+      <InteractiveTerminalMenu path={`~/deployments/${slug}`} />
     </main>
   )
 }

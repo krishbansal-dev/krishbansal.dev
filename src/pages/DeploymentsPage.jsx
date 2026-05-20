@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import TerminalPrompt from '../components/TerminalPrompt'
+import InteractiveTerminalMenu from '../components/InteractiveTerminalMenu'
 import usePageMeta from '../hooks/usePageMeta'
 
 const projects = [
@@ -78,16 +79,7 @@ export default function DeploymentsPage() {
         ))}
       </div>
 
-      <div style={{ marginTop: '1.5rem' }}>
-        <div className="terminal-prompt">
-          <span className="prompt-user">user</span>
-          <span className="prompt-at"> @</span>
-          <span className="prompt-host">krishbansal</span>
-          <span className="prompt-colon"> : </span>
-          <span className="prompt-path">~/deployments$</span>
-          <span className="blinking-cursor" />
-        </div>
-      </div>
+      <InteractiveTerminalMenu path="~/deployments" />
     </main>
   )
 }

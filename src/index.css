@@ -105,6 +105,8 @@ body::after {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 .page-wrapper {
@@ -498,18 +500,23 @@ body::after {
 .status-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  max-width: 320px;
+  max-width: 440px;
   font-size: 0.85rem;
+  line-height: 1.5;
+  gap: 1.5rem;
 }
 
 .status-label {
   color: var(--color-muted);
+  white-space: nowrap;
 }
 
 .status-value {
   color: var(--color-text);
+  text-align: right;
+  word-break: break-word;
 }
 
 .status-value.green { color: var(--color-primary); }
