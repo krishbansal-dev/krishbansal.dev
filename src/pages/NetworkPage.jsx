@@ -5,6 +5,13 @@ import usePageMeta from '../hooks/usePageMeta'
 
 const links = [
   {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/krishbansal-dev/',
+    icon: 'person',
+    desc: 'linkedin.com/in/krishbansal-dev',
+    type: 'link',
+  },
+  {
     label: 'GitHub',
     href: 'https://github.com/krishbansal-dev',
     icon: 'code',
@@ -12,10 +19,10 @@ const links = [
     type: 'link',
   },
   {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/krishbansal-dev/',
-    icon: 'person',
-    desc: 'linkedin.com/in/krishbansal-dev',
+    label: 'LeetCode',
+    href: 'https://leetcode.com/u/N0JRtpSDDl/',
+    icon: 'trophy',
+    desc: 'leetcode.com/u/N0JRtpSDDl',
     type: 'link',
   },
   {
@@ -27,13 +34,6 @@ const links = [
     copyValue: 'contact@krishbansal.dev',
   },
   {
-    label: 'Twitter / X',
-    href: 'https://x.com/krish4b',
-    icon: 'alternate_email',
-    desc: 'x.com/krish4b',
-    type: 'link',
-  },
-  {
     label: 'Discord',
     href: 'https://discordapp.com/users/715624445544235019',
     icon: 'forum',
@@ -41,10 +41,17 @@ const links = [
     type: 'link',
   },
   {
-    label: 'LeetCode',
-    href: 'https://leetcode.com/u/N0JRtpSDDl/',
-    icon: 'trophy',
-    desc: 'leetcode.com/u/N0JRtpSDDl',
+    label: 'Twitter / X',
+    href: 'https://x.com/krish4b',
+    icon: 'alternate_email',
+    desc: 'x.com/krish4b',
+    type: 'link',
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/krishbansal.dev/',
+    icon: 'photo_camera',
+    desc: 'instagram.com/krishbansal.dev',
     type: 'link',
   },
 ]
