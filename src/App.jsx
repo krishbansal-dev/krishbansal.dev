@@ -5,6 +5,7 @@ import NetworkBackground from './components/NetworkBackground'
 import SidePanels from './components/SidePanels'
 import InitPage from './pages/InitPage'
 import AboutPage from './pages/AboutPage'
+import CredentialsPage from './pages/CredentialsPage'
 import DeploymentsPage from './pages/DeploymentsPage'
 import ProjectDetailPage from './pages/ProjectDetailPage'
 import NetworkPage from './pages/NetworkPage'
@@ -21,6 +22,7 @@ function App() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<InitPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/credentials" element={<CredentialsPage />} />
           <Route path="/deployments" element={<DeploymentsPage />} />
           <Route path="/deployments/:slug" element={<ProjectDetailPage />} />
           <Route path="/network" element={<NetworkPage />} />

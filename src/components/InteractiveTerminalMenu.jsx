@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 const ALL_PATHWAYS = [
   { id: 'home', cmd: 'cd ~/', label: 'Return to system boot / home', path: '/' },
   { id: 'about', cmd: 'cd ~/about', label: 'Explore bio & system status', path: '/about' },
+  { id: 'credentials', cmd: 'cd ~/credentials', label: 'View academics & certifications', path: '/credentials' },
   { id: 'deployments', cmd: 'cd ~/deployments', label: 'Browse projects & deployments', path: '/deployments' },
   { id: 'network', cmd: 'cd ~/network', label: 'Get in touch & social links', path: '/network' },
 ]
@@ -17,19 +18,12 @@ export default function InteractiveTerminalMenu({ path }) {
   // Determine current active section from location path
   const currentPath = location.pathname
 
-  // Filter out the active page to present the other 3 non-opened sections
-  let filteredPathways = []
-  if (currentPath === '/') {
-    filteredPathways = ALL_PATHWAYS.filter((p) => p.id !== 'home')
-  } else if (currentPath === '/about') {
-    filteredPathways = ALL_PATHWAYS.filter((p) => p.id !== 'about')
-  } else if (currentPath.startsWith('/deployments')) {
-    filteredPathways = ALL_PATHWAYS.filter((p) => p.id !== 'deployments')
-  } else if (currentPath === '/network') {
-    filteredPathways = ALL_PATHWAYS.filter((p) => p.id !== 'network')
-  } else {
-    filteredPathways = ALL_PATHWAYS.filter((p) => p.id !== 'home')
-  }
+  // Filter out the active page to present the other 4 non-opened sections
+  const filteredPathways = ALL_PATHWAYS.filter((p) => {
+    if (p.path === '/' && currentPath === '/') return false
+    if (p.path !== '/' && currentPath.startsWith(p.path)) return false
+    return true
+  })
 
   // Map remaining 3 options to sequential CLI keys: '1', '2', '3'
   const menuOptions = filteredPathways.map((opt, index) => ({
@@ -111,7 +105,7 @@ export default function InteractiveTerminalMenu({ path }) {
           }}
         >
           <p style={{ color: 'var(--color-text-dim)', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
-            SELECT A PATHWAY OR CLICK A COMMAND (OR PRESS 1, 2, 3):
+            SELECT A PATHWAY OR CLICK A COMMAND (OR PRESS {menuOptions.map((o) => o.key).join(', ')}):
           </p>
           {menuOptions.map((opt) => (
             <button
