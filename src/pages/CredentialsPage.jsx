@@ -5,15 +5,6 @@ import usePageMeta from '../hooks/usePageMeta'
 
 const academics = [
   {
-    institution: '[Your College / University Name]',
-    location: 'Incoming Freshman / Enrolled Student',
-    period: '2026 — Present',
-    program: 'Undergraduate Program (B.Tech / B.S. / B.E.)',
-    details: 'Currently finalizing enrollment details. Focus areas include computer science, software engineering, and digital infrastructure.',
-    status: 'ENROLLING',
-    icon: 'school',
-  },
-  {
     institution: 'Sri Chaitanya Institute',
     location: 'Chandigarh / Panchkula, India',
     period: '2024 — 2026',
@@ -59,7 +50,7 @@ const certifications = [
 export default function CredentialsPage() {
   usePageMeta(
     'Krish Bansal | Academics & Certifications',
-    'Explore the education history and professional credentials of Krish Bansal. Features academic milestones from IIT Roorkee and certifications from IBM and Google.'
+    'Explore the education history and professional credentials of Krish Bansal. Features academic milestones from Sri Chaitanya Institute and certifications from IBM and Google.'
   )
   const [show, setShow] = useState(false)
 
