@@ -42,9 +42,9 @@ const links = [
   },
   {
     label: 'Twitter / X',
-    href: 'https://x.com/krish4b',
+    href: 'https://x.com/krishbansaldev',
     icon: 'alternate_email',
-    desc: 'x.com/krish4b',
+    desc: 'x.com/krishbansaldev',
     type: 'link',
   },
   {
