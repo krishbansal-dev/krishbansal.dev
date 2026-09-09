@@ -5,6 +5,15 @@ import usePageMeta from '../hooks/usePageMeta'
 
 const academics = [
   {
+    institution: 'Amity University, Mohali',
+    location: 'Mohali, Punjab, India',
+    period: '2026 — Present',
+    program: 'B.Tech in Computer Science & Engineering (Artificial Intelligence & Machine Learning)',
+    details: 'Currently pursuing an undergraduate degree specialising in artificial intelligence and machine learning, covering data structures, algorithms, neural networks, and applied AI systems.',
+    status: 'IN PROGRESS',
+    icon: 'school',
+  },
+  {
     institution: 'Sri Chaitanya Institute',
     location: 'Chandigarh / Panchkula, India',
     period: '2024 — 2026',
@@ -50,7 +59,7 @@ const certifications = [
 export default function CredentialsPage() {
   usePageMeta(
     'Krish Bansal | Academics & Certifications',
-    'Explore the education history and professional credentials of Krish Bansal. Features academic milestones from Sri Chaitanya Institute and certifications from IBM and Google.'
+    'Explore the education history and professional credentials of Krish Bansal. Features academic milestones from Amity University, Mohali and Sri Chaitanya Institute, plus certifications from IBM and Google.'
   )
   const [show, setShow] = useState(false)
 
